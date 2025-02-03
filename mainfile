@@ -1,0 +1,34 @@
+#!/bin/bash
+#main file
+
+# *****************************Project Role: Simple Bank System Database**************
+# *****************************Creator: Hossam Yasser*********************************
+# *****************************Creation Time: October 25, 2023************************
+#******************************e-mail:hossamabdelhady000@gmail.com********************
+# *****************************Version: 1.0.0*****************************************
+
+while true;do
+# Main menu
+echo "**********************Welcome to Bank System************************************"
+echo "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+echo "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+echo "-> Select your role:"
+echo "-> 1) Client"
+echo "-> 2) Employee"
+echo "-> 3) Moderator"
+echo "-> 4) Exit"
+read -p "-> Enter choice: " choice
+
+# Switch between roles
+case $choice in
+    1) ./clientfile ;;
+    2) ./employeefile ;;
+    3) sudo ./moderatorfile ;;  # Requires root privileges
+    4) exit 0 ;;
+    *) 
+    echo "-----------------------------------------"
+    echo "Invalid choice!"; 
+    echo "-----------------------------------------"
+    exit 1 ;;
+esac
+done

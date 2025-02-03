@@ -1,0 +1,55 @@
+#!/bin/bash
+#employee file
+DATA_FILE="data.txt"
+
+while true; do
+# Employee menu
+echo "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+echo "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+echo "1) Normal operations Withdraw/Deposit/Show Balance"
+echo "2) Add Account"
+echo "3) Delete Account"
+echo "4) Exit"
+echo "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+echo "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+read -p "Choose an option: " option
+
+# Switch between operations
+case $option in
+    1) ./client.sh ;; # Reuse client functions
+    2) 
+        read -p "Enter new account ID: " new_id
+        if grep -q "^$new_id|" "$DATA_FILE"; then
+            echo "Account already exists!"
+        else
+            read -p "Enter name: " name
+            read -p "Enter initial balance: " balance
+            echo "$new_id|$name|$balance" >> "$DATA_FILE"
+            echo "-----------------------------------------"
+            echo "Account added successfully!"
+            echo "-----------------------------------------"
+        fi
+        ;;
+    3) 
+        read -p "Enter account ID to delete: " del_id
+        if grep -q "^$del_id|" "$DATA_FILE"; then
+            sed -i "/^$del_id|/d" "$DATA_FILE"
+            echo "-----------------------------------------"
+            echo "Account deleted successfully!"
+            echo "-----------------------------------------"
+        else
+            echo "-----------------------------------------"
+            echo "Account not found!"
+            echo "-----------------------------------------"
+        fi
+        ;;
+    4) 
+        exit 0
+        ;;
+    *) 
+        echo "-----------------------------------------"
+        echo "Invalid option!"
+        echo "-----------------------------------------"
+        ;;
+esac
+done

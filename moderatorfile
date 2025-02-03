@@ -1,0 +1,9 @@
+#!/bin/bash
+#moderator access 
+
+while true; do
+echo "-----------------------------------------"
+echo "****** Moderator Access Granted *********"
+echo "-----------------------------------------"
+./employeefile
+done
