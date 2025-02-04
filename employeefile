@@ -16,7 +16,7 @@ read -p "Choose an option: " option
 
 # Switch between operations
 case $option in
-    1) ./client.sh ;; # Reuse client functions
+    1) ./clientfile ;; # Reuse client functions
     2) 
         read -p "Enter new account ID: " new_id
         if grep -q "^$new_id|" "$DATA_FILE"; then
