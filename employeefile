@@ -20,7 +20,9 @@ case $option in
     2) 
         read -p "Enter new account ID: " new_id
         if grep -q "^$new_id|" "$DATA_FILE"; then
+            echo "-----------------------------------------"
             echo "Account already exists!"
+            echo "-----------------------------------------"
         else
             read -p "Enter name: " name
             read -p "Enter initial balance: " balance
@@ -33,7 +35,7 @@ case $option in
     3) 
         read -p "Enter account ID to delete: " del_id
         if grep -q "^$del_id|" "$DATA_FILE"; then
-            sed -i "/^$del_id|/d" "$DATA_FILE"
+            sed -i "/^$del_id|/d" "$DATA_FILE"                          #insttead
             echo "-----------------------------------------"
             echo "Account deleted successfully!"
             echo "-----------------------------------------"
