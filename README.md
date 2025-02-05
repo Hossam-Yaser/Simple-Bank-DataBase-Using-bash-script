@@ -36,7 +36,7 @@ Ensure you have a **Linux environment** with **Bash** installed.
    ```
 2. Grant execution permissions:
    ```bash
-   chmod +x *.
+   chmod +x .
    ```
 3. Run the main script:
    ```bash
